@@ -21,5 +21,27 @@ function mysprite (mySprite: Sprite) {
     controller.moveSprite(mySprite)
     mySprite.setStayInScreen(true)
 }
+let tank: Sprite = null
 let mySprite: Sprite = null
 mysprite(mySprite)
+game.onUpdateInterval(500, function () {
+    tank = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . 7 7 7 7 7 7 7 7 . . . . . . 
+        . . . . . . 7 7 7 7 . . . . . . 
+        . . . . . 7 7 7 7 7 7 7 7 . . . 
+        . . . 7 7 7 7 7 7 7 7 7 7 . . . 
+        . . . 7 7 7 7 7 7 7 7 7 7 . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    tank.setVelocity(randint(0, 70), randint(0, 70))
+})
