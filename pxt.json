@@ -1,0 +1,25 @@
+{
+    "name": "group project - Copy",
+    "description": "",
+    "dependencies": {
+        "device": "*",
+        "group project extension": "pub:56877-30344-10548-63888"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "assets.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "1.12.57",
+        "targetId": "arcade"
+    },
+    "supportedTargets": [
+        "arcade"
+    ],
+    "preferredEditor": "blocksprj"
+}
