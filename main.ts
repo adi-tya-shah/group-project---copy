@@ -1,5 +1,4 @@
-let mySprite: Sprite = null
-function doSomething (mySprite: Sprite) {
+function mysprite (mySprite: Sprite) {
     mySprite = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . f f f f f f . . . . . 
@@ -18,4 +17,9 @@ function doSomething (mySprite: Sprite) {
         . . . f f f f f f f f f f . . . 
         . . . . f f . . . f f f . . . . 
         `, SpriteKind.Player)
+    mySprite.setPosition(4, 75)
+    controller.moveSprite(mySprite)
+    mySprite.setStayInScreen(true)
 }
+let mySprite: Sprite = null
+mysprite(mySprite)
