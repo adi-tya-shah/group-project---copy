@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "group project extension": "pub:56877-30344-10548-63888"
+        "group project extension": "pub:56877-30344-10548-63888",
+        "Extension": "pub:48728-15919-42325-75076"
     },
     "files": [
         "main.blocks",
