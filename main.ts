@@ -10,11 +10,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
         . . . . . . . . . f . . . . . . 
-        . . . . . . f 7 f 8 f . . . . . 
+        . . . . . . . . . f f . . . . . 
+        . . . . . . f 7 f 8 f f . . . . 
+        . . . . . . . . . f f . . . . . 
         . . . . . . . . . f . . . . . . 
-        . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -46,6 +46,10 @@ function mysprite (mySprite: Sprite) {
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     sprites.destroy(otherSprite, effects.disintegrate, 500)
     info.changeScoreBy(-1)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    info.changeLifeBy(-1)
 })
 let game2 = false
 let projectile: Sprite = null
@@ -98,7 +102,7 @@ while (info.score() > 0) {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    tank.setVelocity(0, randint(0, 100))
+    tank.setVelocity(randint(0, 100), randint(0, 100))
     tank.setPosition(randint(46, 142), randint(10, 100))
     tank.setBounceOnWall(true)
     projectile2 = sprites.createProjectileFromSprite(img`
