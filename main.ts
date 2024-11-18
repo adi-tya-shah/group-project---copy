@@ -3,22 +3,22 @@ namespace SpriteKind {
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . . . 4 2 2 . . . . . 
-        . . . . . . . . 4 4 4 2 2 2 . . 
-        . . . . . . . . 4 5 5 4 4 2 . . 
-        . . . . . . . . 4 5 5 d 5 5 2 . 
-        . . . . . . . . . 4 d d 5 5 4 2 
-        . . . . . . . . . 4 5 5 5 d 4 2 
-        2 2 2 2 2 2 2 2 2 4 5 5 5 4 4 2 
-        4 4 4 4 4 4 4 4 4 d 5 5 d 5 5 2 
-        4 4 4 4 4 4 4 4 5 5 d 5 5 5 5 2 
-        2 2 2 2 2 2 2 2 5 5 d 5 5 5 4 2 
-        . . . . . . . . . d d 5 5 4 4 2 
-        . . . 1 . . . . . 5 5 d 4 4 4 2 
-        . . . . . . . . 4 5 5 4 5 4 2 . 
-        . . . . . . . . 4 5 5 4 4 4 2 . 
-        . . . . . . . . 4 4 4 4 2 2 2 . 
-        . . . . . . . . 4 4 4 2 2 . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . f f . . . . 
+        . . . . . . . . . . f f f f . . 
+        . . . f f f f f f f f 6 f f f . 
+        . . . f 7 7 7 7 7 7 f 6 6 6 f f 
+        . . . f 7 7 7 7 7 7 f 6 6 6 f f 
+        . . . f f f f f f f f 6 f f f . 
+        . . . . . . . . . . f f f f . . 
+        . . . . . . . . . . f f . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
         `, mySprite, 75, 0)
 })
 sprites.onOverlap(SpriteKind.bullet, SpriteKind.Player, function (sprite, otherSprite) {
@@ -47,10 +47,10 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     sprites.destroy(otherSprite, effects.disintegrate, 500)
     info.changeScoreBy(-1)
 })
-let projectile2: Sprite = null
-let tank: Sprite = null
 let game2 = false
 let projectile: Sprite = null
+let projectile2: Sprite = null
+let tank: Sprite = null
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -78,7 +78,8 @@ if (controller.A.isPressed()) {
 } else {
     info.setLife(5)
 }
-game.onUpdateInterval(1000, function () {
+while (info.score() > 0) {
+    pause(500)
     tank = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -98,10 +99,8 @@ game.onUpdateInterval(1000, function () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
     tank.setVelocity(0, randint(0, 100))
-    tank.setPosition(142, 53)
+    tank.setPosition(randint(46, 142), randint(10, 100))
     tank.setBounceOnWall(true)
-})
-game.onUpdateInterval(100, function () {
     projectile2 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -121,4 +120,4 @@ game.onUpdateInterval(100, function () {
         . . . . . . . . . . . . . . . . 
         `, tank, -60, 0)
     projectile2.setKind(SpriteKind.bullet)
-})
+}
