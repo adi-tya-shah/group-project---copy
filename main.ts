@@ -98,7 +98,7 @@ while (info.score() > 0) {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    tank.setVelocity(0, randint(0, 100))
+    tank.setVelocity(10, randint(0, 100))
     tank.setPosition(randint(46, 142), randint(10, 100))
     tank.setBounceOnWall(true)
     projectile2 = sprites.createProjectileFromSprite(img`
